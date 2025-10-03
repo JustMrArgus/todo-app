@@ -34,6 +34,18 @@ class APIFeatures {
     return this;
   }
 
+  search() {
+    const { search } = this.queryString;
+
+    if (search) {
+      this.options.where.name = {
+        [Op.like]: `%${search}%`,
+      };
+    }
+
+    return this;
+  }
+
   async exec() {
     return this.model.findAll(this.options);
   }
