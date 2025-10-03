@@ -12,12 +12,17 @@ const sequelize = new Sequelize({
 })();
 
 const Todo = sequelize.define("Todo", {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   status: {
-    type: DataTypes.ENUM("all", "done", "undone"),
+    type: DataTypes.ENUM("done", "undone"),
     allowNull: false,
     defaultValue: "undone",
   },
@@ -28,10 +33,6 @@ const Todo = sequelize.define("Todo", {
       min: 1,
       max: 10,
     },
-  },
-  dueDate: {
-    type: DataTypes.DATE,
-    allowNull: true,
   },
 });
 

@@ -23,7 +23,7 @@ exports.createTodo = async (req, res) => {
 
 exports.getTodos = async (req, res) => {
   try {
-    const features = new APIFeatures(Movie, req.query).filter().sort().search();
+    const features = new APIFeatures(Todo, req.query).filter().sort().search();
 
     const todos = await features.exec();
     res.json({ data: todos, status: 1 });
