@@ -1,5 +1,7 @@
 const dotenv = require("dotenv");
 
+const { sequelize } = require("./models/index");
+
 dotenv.config();
 
 const app = require("./app");
