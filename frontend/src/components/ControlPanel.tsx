@@ -7,7 +7,7 @@ import Search from "./Search";
 type Todo = {
   id: number;
   name: string;
-  status: string;
+  status: "undone" | "done";
   priority: number;
 };
 

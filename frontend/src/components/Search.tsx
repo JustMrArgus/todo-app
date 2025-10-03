@@ -6,7 +6,7 @@ type searchProps = {
 };
 
 const Search = ({ searchParam, handleSearchParam }: searchProps) => {
-  const search = (e) => {
+  const search = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleSearchParam(e.target.value);
   };
 

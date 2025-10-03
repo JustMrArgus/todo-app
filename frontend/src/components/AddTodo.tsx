@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 type Todo = {
   id: number;
   name: string;
-  status: string;
+  status: "done" | "undone";
   priority: number;
 };
 

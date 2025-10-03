@@ -12,7 +12,9 @@ const Filter = ({ statusParam, handleStatusParam }: FilterProps) => {
         name="sort"
         id="sort"
         value={statusParam}
-        onChange={(e) => handleStatusParam(e.target.value)}
+        onChange={(e) =>
+          handleStatusParam(e.target.value as "all" | "done" | "undone")
+        }
       >
         <option value="all">ALL</option>
         <option value="done">DONE</option>

@@ -12,7 +12,7 @@ const Sort = ({ sortParam, handleSortParam }: SortProps) => {
         name="sort"
         id="sort"
         value={sortParam}
-        onChange={(e) => handleSortParam(e.target.value)}
+        onChange={(e) => handleSortParam(e.target.value as "asc" | "desc")}
       >
         <option value="desc">DESC</option>
         <option value="asc">ASC</option>
