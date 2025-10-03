@@ -51,6 +51,7 @@ const Home = () => {
           handleSearchParam={setSearchParam}
           sortParam={sortParam}
           handleSortParam={setSortParam}
+          todosHandler={setTodos}
         />
         <div className="flex flex-col">
           {todos

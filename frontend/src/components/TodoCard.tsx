@@ -69,7 +69,7 @@ const TodoCard = ({
     return value >= min && value <= max;
   };
 
-  const changePriority = async (e) => {
+  const changePriority = async (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = Number(e.target.value);
     if (value < 1) value = 1;
     if (value > 10) value = 10;
@@ -82,13 +82,9 @@ const TodoCard = ({
         body: JSON.stringify({ priority: value }),
       });
 
-      console.log(response);
+      const result = await response.json();
 
-      todoHandler((prev) =>
-        prev.map((todo) =>
-          todo.id === id ? { ...todo, priority: value } : todo
-        )
-      );
+      todoHandler((prev) => [...prev, result.data]);
     } catch (err) {
       console.log("error", err);
     }
