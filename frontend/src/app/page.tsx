@@ -24,7 +24,7 @@ const Home = () => {
     const getTodos = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/todos/?status=${statusParam}&sort=${sortParam}&search=${searchParam}`
+          `${process.env.NEXT_PUBLIC_API_URL}/todos/?status=${statusParam}&sort=${sortParam}&search=${searchParam}`
         );
 
         if (!response.ok) {

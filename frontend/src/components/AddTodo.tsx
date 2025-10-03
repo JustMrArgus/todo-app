@@ -43,14 +43,14 @@ const AddTodo = ({
     };
 
     try {
-      await fetch(`http://localhost:8000/api/todos/`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newTodo),
       });
 
       const response = await fetch(
-        `http://localhost:8000/api/todos/?status=${statusParam}&sort=${sortParam}&search=${searchParam}`
+        `${process.env.NEXT_PUBLIC_API_URL}/todos/?status=${statusParam}&sort=${sortParam}&search=${searchParam}`
       );
       const result = await response.json();
       todosHandler(result.data);

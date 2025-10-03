@@ -37,7 +37,7 @@ const TodoCard = ({
     const newStatus = status === "undone" ? "done" : "undone";
 
     try {
-      await fetch(`http://localhost:8000/api/todos/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
@@ -55,7 +55,7 @@ const TodoCard = ({
 
   const deleteTodo = async () => {
     try {
-      await fetch(`http://localhost:8000/api/todos/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos/${id}`, {
         method: "DELETE",
       });
 
@@ -76,15 +76,17 @@ const TodoCard = ({
     setNewPriority(value);
 
     try {
-      const response = await fetch(`http://localhost:8000/api/todos/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ priority: value }),
       });
 
-      const result = await response.json();
-
-      todoHandler((prev) => [...prev, result.data]);
+      todoHandler((prev) =>
+        prev.map((todo) =>
+          todo.id === id ? { ...todo, priority: value } : todo
+        )
+      );
     } catch (err) {
       console.log("error", err);
     }
