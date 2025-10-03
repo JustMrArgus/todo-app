@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-type ControlPanelProps = {
+type SortProps = {
   sortParam: "asc" | "desc";
   handleSortParam: Dispatch<SetStateAction<"asc" | "desc">>;
 };
 
-const Sort = ({ sortParam, handleSortParam }: ControlPanelProps) => {
+const Sort = ({ sortParam, handleSortParam }: SortProps) => {
   return (
     <div>
       <select

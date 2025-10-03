@@ -22,7 +22,7 @@ const ControlPanel = ({
   return (
     <div>
       <Sort sortParam={sortParam} handleSortParam={handleSortParam} />
-      <Filter />
+      <Filter statusParam={statusParam} handleStatusParam={handleStatusParam} />
     </div>
   );
 };
