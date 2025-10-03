@@ -1,4 +1,5 @@
-const { Todo } = require("../models/todo");
+const { Todo } = require("../models/index");
+const APIFeatures = require("../utils/apiFeatures");
 
 exports.createTodo = async (req, res) => {
   try {
@@ -22,7 +23,9 @@ exports.createTodo = async (req, res) => {
 
 exports.getTodos = async (req, res) => {
   try {
-    const todos = await Todo.findAll();
+    const features = new APIFeatures(Movie, req.query).filter().sort();
+
+    const todos = await features.exec();
     res.json({ data: todos, status: 1 });
   } catch (err) {
     res.status(500).json({ message: err.message, status: 0 });
