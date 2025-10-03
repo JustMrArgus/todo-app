@@ -42,8 +42,8 @@ const Home = () => {
   }, [statusParam, searchParam, sortParam]);
 
   return (
-    <main>
-      <div>
+    <main className="font-lato flex justify-center">
+      <div className="px-20 pt-20 max-w-[1000px]">
         <ControlPanel
           statusParam={statusParam}
           handleStatusParam={setStatusParam}

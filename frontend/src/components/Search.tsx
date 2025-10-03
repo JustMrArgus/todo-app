@@ -11,9 +11,13 @@ const Search = ({ searchParam, handleSearchParam }: searchProps) => {
   };
 
   return (
-    <div>
-      <input type="text" value={searchParam} onChange={search} />
-    </div>
+    <input
+      className="border-[#c4c4c4] rounded-[2px] w-full grow-1 border-1 p-1"
+      type="text"
+      value={searchParam}
+      onChange={search}
+      placeholder="Fry some eggs..."
+    />
   );
 };
 

@@ -37,7 +37,7 @@ const ControlPanel = ({
   };
 
   return (
-    <div>
+    <div className="flex text-[#818181] gap-5 text-xl items-center">
       <Sort sortParam={sortParam} handleSortParam={handleSortParam} />
       <Filter statusParam={statusParam} handleStatusParam={handleStatusParam} />
       <select value={inputMode} onChange={changeInputMode}>
@@ -45,7 +45,12 @@ const ControlPanel = ({
         <option value="search">Search</option>
       </select>
       {inputMode === "add" ? (
-        <AddTodo todosHandler={todosHandler} />
+        <AddTodo
+          todosHandler={todosHandler}
+          searchParam={searchParam}
+          sortParam={sortParam}
+          statusParam={statusParam}
+        />
       ) : (
         <Search
           searchParam={searchParam}

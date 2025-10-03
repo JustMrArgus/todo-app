@@ -9,9 +9,17 @@ type Todo = {
 
 type AddTodoProps = {
   todosHandler: Dispatch<SetStateAction<Todo[]>>;
+  statusParam: "all" | "done" | "undone";
+  sortParam: "asc" | "desc";
+  searchParam: string;
 };
 
-const AddTodo = ({ todosHandler }: AddTodoProps) => {
+const AddTodo = ({
+  todosHandler,
+  statusParam,
+  sortParam,
+  searchParam,
+}: AddTodoProps) => {
   const [newTodoName, setNewTodoName] = useState<string>("");
   const [newTodoPriority, setNewTodoPriority] = useState<number>(1);
 
@@ -41,7 +49,9 @@ const AddTodo = ({ todosHandler }: AddTodoProps) => {
         body: JSON.stringify(newTodo),
       });
 
-      const response = await fetch("http://localhost:8000/api/todos/");
+      const response = await fetch(
+        `http://localhost:8000/api/todos/?status=${statusParam}&sort=${sortParam}&search=${searchParam}`
+      );
       const result = await response.json();
       todosHandler(result.data);
     } catch (err) {
@@ -57,7 +67,10 @@ const AddTodo = ({ todosHandler }: AddTodoProps) => {
           required
           value={newTodoName}
           onChange={handleNameChange}
+          placeholder="Do something great..."
+          className="border-[#c4c4c4] rounded-[2px]  border-1 p-1"
         />
+
         <input
           type="number"
           className="p-2"
@@ -67,7 +80,9 @@ const AddTodo = ({ todosHandler }: AddTodoProps) => {
           onChange={handlePriorityChange}
           value={newTodoPriority}
         />
-        <button>Add</button>
+        <button className="ml-3 border-1 p-2 rounded-xl duration-200 hover:scale-[1.1] border-[#c4c4c4] cursor-pointer ">
+          Add
+        </button>
       </form>
     </div>
   );
